@@ -1,20 +1,45 @@
-// exes2_151_D.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
+
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int n, i, hilal[29], num, muhamad, fakhri, mid; //muhamad lowerbound, fakhri upperbound
+	cout << "Masukkan Panjang Elemment Array :";
+	cin >> n;
+
+	for (i = 0; i < n; i++)
+	{
+		cout << "Masukkan Data " << (i + 1) << ":";
+		cin >> hilal[i];
+	}
+	cout << "Masukkan data yg akan dicari : ";
+	cin >> num;
+	fakhri = 0;
+	muhamad = n - 1;
+	mid = (muhamad + fakhri) / 2;
+	while (fakhri <= muhamad)
+	{
+		if (hilal[mid] < num)
+		{
+			fakhri = mid - 1;
+
+		}
+		else if (hilal[mid] == num)
+		{
+			cout << num << " found " << mid + 1 << "\n";
+			break;
+		}
+		else {
+			muhamad = mid + 1;
+		}
+		mid = (muhamad + fakhri) / 2;
+	}
+	if (fakhri > muhamad)
+	{
+		cout << num << " Not Found ";
+	}
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
